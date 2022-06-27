@@ -29,12 +29,45 @@ public class Ejersicio {
         return mcd;
 
     }
-    public int sumador(int[]vector){
-        int suma = 0;
-        for(int i=0;i<vector.length; i++){
-            suma=suma+vector[i];
-        }
-        return suma;
+    /*
+    suma de los elementos de un vector
+    vector = {2,4,6}
+    suma = 2+ {4,6}
+    suma = 4 + {6}
+    suma = 6 (caso base)
+     */
+public static  int sumaVector (int[] vector, int indice){
+    int suma;
+    if(indice == vector.length -1){
+        //caso base
+        suma = vector[indice];
+    }else{
+        suma = vector[indice] + sumaVector(vector, indice +1);
+    }
+    return  suma;
+    }
+    /*
+    invertir una cadena de texto "Recursividad" = "dadivisruceR"
+     */
+       private static  String invertirCadena(String cadena, int indice){
+            String inversa;
+            if(indice == 0){ //caso base
+                inversa = String.valueOf(cadena.charAt(indice));
+        }else {//llamada recursiva
+                inversa = String.valueOf(cadena.charAt(indice)) + invertirCadena(cadena,indice -1 );
+    }
+            return inversa;
+}
+/*
+metodo auxiliar que llama al metodo recursivo
+ */
+public static String invertirCadena(String cadena){
+    return  invertirCadena(cadena, cadena.length()-1);
+}
     }
 
-}
+
+
+
+
+
